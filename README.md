@@ -1,6 +1,6 @@
 # IoanCocianu
 
-The program is functional but lacks some tweaks like interplay or refresh list.. and i think... IM SURE there is a bug somewhere..
+The program is functional but lacks some tweaks like interplay or refresh list..
 
 the idea:
   1. read file "names.txt"
