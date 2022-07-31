@@ -11,61 +11,78 @@ public class RandomSelectFile {
         List<String> nameList = new ArrayList<>();
         List<String> chosenList = new ArrayList<>();
         Random random = new Random();
+        boolean yesOrNo = true;
+        Scanner keyboard = new Scanner(System.in);
+        String decision;
 
-        try {
-            File file = new File("src\\names.txt");
-            Scanner scanner = new Scanner(file);
-            while (scanner.hasNextLine()) {
-                nameList.add(scanner.nextLine());
-            }
-
-            int nrPersonSelected = random.nextInt(nameList.size());
-            System.out.println(nrPersonSelected);
-
-            file = new File("src\\chosen.txt");
-            scanner = new Scanner(file);
-            while (scanner.hasNextLine()) {
-                chosenList.add(scanner.nextLine());
-            }
-
-
-            int occurences = Collections.frequency(chosenList, nameList.get(nrPersonSelected));
-            int nrPersonSelectedFinal = nrPersonSelected;
-
-
-            if (occurences > 0)
-                for (int i = 0; i <= occurences; i++) {
-                    nrPersonSelectedFinal = random.nextInt(nameList.size());
-                    if (nrPersonSelected != nrPersonSelectedFinal) {
-                        break;
-                    }
-                    if (i==occurences){
-                        if (nrPersonSelected==nrPersonSelectedFinal){
-                            i=0;
-                        }
-                    }
+        while (yesOrNo) {
+            try {
+                File file = new File("src\\names.txt");
+                Scanner scanner = new Scanner(file);
+                while (scanner.hasNextLine()) {
+                    nameList.add(scanner.nextLine());
                 }
 
-            file = new File("src\\lastPicked.txt");
-            new FileWriter("src\\lastPicked.txt", false).close();
-            FileWriter fileWriterLastPicked = new FileWriter(file, true);
-            fileWriterLastPicked.write(nameList.get(nrPersonSelectedFinal));
+                int nrPersonSelected = random.nextInt(nameList.size());
+                System.out.println(nrPersonSelected);
 
-            file = new File("src\\chosen.txt");
-            FileWriter fileWriterListChosen = new FileWriter(file, true);
-            fileWriterListChosen.write(nameList.get(nrPersonSelectedFinal) + "\r\n");
+                file = new File("src\\chosen.txt");
+                scanner = new Scanner(file);
+                while (scanner.hasNextLine()) {
+                    chosenList.add(scanner.nextLine());
+                }
 
-            System.out.println("First selected: " + nameList.get(nrPersonSelected));
-            System.out.println("Final select:" + nameList.get(nrPersonSelectedFinal));
-            System.out.println("Already chosen:" + chosenList);
 
-            fileWriterLastPicked.close();
-            fileWriterListChosen.close();
-            scanner.close();
+                int occurences = Collections.frequency(chosenList, nameList.get(nrPersonSelected));
+                int nrPersonSelectedFinal = nrPersonSelected;
 
-        } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
+
+                if (occurences > 0)
+                    for (int i = 0; i <= occurences; i++) {
+                        nrPersonSelectedFinal = random.nextInt(nameList.size());
+                        if (nrPersonSelected != nrPersonSelectedFinal) {
+                            break;
+                        }
+                        if (i == occurences) {
+                            if (nrPersonSelected == nrPersonSelectedFinal) {
+                                i = 0;
+                            }
+                        }
+                    }
+
+                file = new File("src\\lastPicked.txt");
+                new FileWriter("src\\lastPicked.txt", false).close();
+                FileWriter fileWriterLastPicked = new FileWriter(file, true);
+                fileWriterLastPicked.write(nameList.get(nrPersonSelectedFinal));
+
+                file = new File("src\\chosen.txt");
+                FileWriter fileWriterListChosen = new FileWriter(file, true);
+                fileWriterListChosen.write(nameList.get(nrPersonSelectedFinal) + "\r\n");
+
+                System.out.println("First selected: " + nameList.get(nrPersonSelected));
+                System.out.println("Final select:" + nameList.get(nrPersonSelectedFinal));
+                System.out.println("Already chosen:" + chosenList);
+
+                fileWriterLastPicked.close();
+                fileWriterListChosen.close();
+                scanner.close();
+
+            } catch (FileNotFoundException e) {
+                System.out.println("An error occurred.");
+                e.printStackTrace();
+            } finally {
+                System.out.println("Do you want to roll again? Enter yes or no. \n");
+                decision = keyboard.nextLine();
+                switch (decision) {
+                    case "yes":
+                        yesOrNo = true;
+                        break;
+                    case "no":
+                        yesOrNo = false;
+                        break;
+                }
+
+            }
         }
 
 
