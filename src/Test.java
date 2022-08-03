@@ -7,10 +7,10 @@ public class Test {
 
         vendingMachine vM = new vendingMachine();
 
-        System.out.println("Test:   5.00 - 0.99 = 4.01");
+        System.out.println("Test :   5.00 - 0.99 = 4.01");
         vM.getChange(5.00,  0.99);
 
-        System.out.println("\nTest:   5.77 - 3.21 = 2.56");
+        System.out.println("\nTest :   5.77 - 3.21 = 2.56");
         vM.getChange(5.77,  3.21);
 
 

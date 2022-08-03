@@ -42,7 +42,7 @@ public class vendingMachine {
         }
 
         System.out.println("["+moneyArray[5]+","+moneyArray[4]+","+moneyArray[3]+","+moneyArray[2]+","+moneyArray[1]+","+moneyArray[0]+"]");
-        System.out.println("meaning "+changeReceivedCopy/100);
+        System.out.println("meaning :"+changeReceivedCopy/100);
     }
 
 }
