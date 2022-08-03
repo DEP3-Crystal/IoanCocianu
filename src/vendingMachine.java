@@ -1,48 +1,48 @@
 
 public class vendingMachine {
 
-    public void getChange(double baniBagati, double pretProdus){
+    public void getChange(double moneyInserted, double priceOfProduct){
 
-        int valoareFixBani = (int) Math.round(baniBagati*100);
-        int valoareFixPret = (int)  Math.round(pretProdus*100);
+        int moneyValue = (int) Math.round(moneyInserted*100);
+        int priceValue = (int)  Math.round(priceOfProduct*100);
 
-        double restPrimit=valoareFixBani-valoareFixPret;
-        double restPrimitCopie = restPrimit;
-        int[] vectorBaniAfisati = new int[6];
+        double changeReceived=moneyValue-priceValue;
+        double changeReceivedCopy = changeReceived;
+        int[] moneyArray = new int[6];
 
-        while (restPrimit>=100){
-            vectorBaniAfisati[5]++;
-            restPrimit-=100;
+        while (changeReceived>=100){
+            moneyArray[5]++;
+            changeReceived-=100;
         }
 
-        while (restPrimit>=50){
-            vectorBaniAfisati[4]++;
-            restPrimit-=50;
+        while (changeReceived>=50){
+            moneyArray[4]++;
+            changeReceived-=50;
         }
 
-        while (restPrimit>=25){
-            vectorBaniAfisati[3]++;
-            restPrimit-=25;
+        while (changeReceived>=25){
+            moneyArray[3]++;
+            changeReceived-=25;
         }
 
-        while (restPrimit>=10){
-            vectorBaniAfisati[2]++;
-            restPrimit-=10;
+        while (changeReceived>=10){
+            moneyArray[2]++;
+            changeReceived-=10;
         }
 
-        while (restPrimit>=5){
-            vectorBaniAfisati[1]++;
-            restPrimit-=5;
+        while (changeReceived>=5){
+            moneyArray[1]++;
+            changeReceived-=5;
         }
 
 
-        while (restPrimit>=1){
-            vectorBaniAfisati[0]++;
-            restPrimit-=1;
+        while (changeReceived>=1){
+            moneyArray[0]++;
+            changeReceived-=1;
         }
 
-        System.out.println("["+vectorBaniAfisati[5]+","+vectorBaniAfisati[4]+","+vectorBaniAfisati[3]+","+vectorBaniAfisati[2]+","+vectorBaniAfisati[1]+","+vectorBaniAfisati[0]+"]");
-        System.out.println("adica "+restPrimitCopie/100);
+        System.out.println("["+moneyArray[5]+","+moneyArray[4]+","+moneyArray[3]+","+moneyArray[2]+","+moneyArray[1]+","+moneyArray[0]+"]");
+        System.out.println("meaning "+changeReceivedCopy/100);
     }
 
 }

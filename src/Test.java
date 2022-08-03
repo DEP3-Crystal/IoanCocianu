@@ -16,13 +16,13 @@ public class Test {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("\nIntroduceti banii:");
-        double baniBagati = Double.parseDouble(sc.nextLine());
+        System.out.println("\nInsert money:");
+        double moneyIn = Double.parseDouble(sc.nextLine());
 
-        System.out.println("\nIntroduceti pretul prodosului");
-        double pretProdus = Double.parseDouble(sc.nextLine());
+        System.out.println("\nInsert the price of product:");
+        double priceIn = Double.parseDouble(sc.nextLine());
 
-        vM.getChange(baniBagati,pretProdus);
+        vM.getChange(moneyIn,priceIn);
 
 
 
